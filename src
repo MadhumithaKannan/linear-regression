@@ -1,0 +1,51 @@
+from statistics import mean
+import matplotlib.pyplot as plt
+%matplotlib inline 
+
+datax=[3,3,8,9,13,6,11,21,1,16]
+datay=[36,30,57,64,72,43,59,90,20,83]
+length=len(datax) # to find number of iterations
+meanx=mean(datax)
+meany=mean(datay)
+a=0
+b=0
+for i in range(length):
+   a+=(datax[i]-meanx)*(datay[i]-meany)
+   b+=(datax[i]-meanx)*(datax[i]-meanx)
+w1=a/b
+w1=round(w1,2)
+print('w1=',w1)
+w0=meany-meanx*w1
+print('w0=',w0)
+ylist=[]
+print('the y values for given data set')
+for i in range(length):
+    y=w0+w1*datax[i]
+    y=round(y,2)
+    ylist.append(y)
+print(ylist)
+
+#predicting values of y for given x
+x=int(input('enter the value of x '))
+y=w0+w1*x
+print(y)
+
+
+#plotting the points
+plt.plot(datax,ylist)
+# naming the x axis
+plt.xlabel('x - axis')
+# naming the y axis
+plt.ylabel('y - axis')
+ 
+# giving a title to my graph
+plt.title('Linear regression!')
+ 
+# function to show the plot
+plt.show()
+
+
+
+    
+    
+
